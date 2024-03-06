@@ -1,6 +1,7 @@
 // Import React, CSSProperties, ./App.css, and the JSON file
 import React, { CSSProperties } from 'react';
 import './App.css';
+// This line of code imports the data from the JSON file
 import data from './CollegeBasketballTeams.json';
 
 // Create an interface for the JSON data
