@@ -1,9 +1,11 @@
-import React from 'react';
+// Import React, CSSProperties, ./App.css, and the JSON file
+import React, { CSSProperties } from 'react';
 import './App.css';
 import data from './CollegeBasketballTeams.json';
 
+// Create an interface for the JSON data
 interface TeamProps {
-  // Map the JSON data to TypeScript
+  // Map the JSON data to TypeScript; define the data types
   tid: number;
   cid: number;
   did: number;
@@ -17,64 +19,83 @@ interface TeamProps {
   longitude: number;
 }
 
-// const TeamNames = () => {
-//   return (
-//     <div>
-//       {data.teams.map((team) => (
-//         <div key={team.tid}>
-//           <p>{team.name}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
+// Create a function to display the heading
 function Heading() {
-  const headingStyle = {
+  // Create a CSS style for the heading
+  const headingStyle: CSSProperties = {
+    color: 'blue',
+  };
+
+  // Create a CSS style for the paragraph
+  const pStyle: CSSProperties = {
     fontStyle: 'italic',
+    color: 'red',
+    textAlign: 'justify',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   };
 
   return (
-    <h1 style={headingStyle}>
-      This site is to provide you with an overall look into all the teams in
-      college basketball!
-    </h1>
+    // Return some text for the heading and the paragraph
+    <div>
+      <h1 style={headingStyle}>IS 403 - MISSION 09</h1>
+
+      <p style={pStyle}>
+        This website was built by Jacob McGuire (Section 002, Group 03) for his
+        Information Systems class. It shows a list of all Division 1 college
+        basketball teams in little boxes, or, cards, with a little additional
+        information. This is a simple React website that will dynamically change
+        as you add values to the JSON file included in the source files.
+      </p>
+    </div>
   );
 }
 
+// Use a Class Component to display the team cards; also, extend the TeamCard with the TeamProps interface
 class TeamCard extends React.Component<TeamProps> {
   render() {
+    // Create a constant for the JSON data, but individually
     const oneTeam = this.props;
 
+    // Create a CSS style for the card
     const cardStyle = {
       border: '2px solid black',
       padding: '10px',
       margin: '10px',
+      backgroundColor: 'lightgray',
+      borderRadius: '10px',
     };
 
+    // Get the data from the single JSON object (above) and display it in the card
     return (
       <div style={cardStyle}>
         <h2>School Name: {oneTeam.school}</h2>
+
         <p>School Mascot Name: {oneTeam.name}</p>
         <p>
-          Location (City, State): {oneTeam.state}, {oneTeam.city}
+          Location (City, State): {oneTeam.city}, {oneTeam.state}
         </p>
       </div>
     );
   }
 }
 
+// Create a function to list the teams
 function ListTeams() {
+  // Return the data from the JSON file; I don't need CSS because this is to load the data
   return (
     <div>
       {data.teams.map((team) => (
         <TeamCard key={team.tid} {...team} />
       ))}
     </div>
+    // I used the spread operator to pass props to the TeamCard component
   );
 }
 
+// Main App function
 function App() {
+  // Display the heading and the list of teams
   return (
     <div className="App">
       <Heading />
@@ -83,4 +104,5 @@ function App() {
   );
 }
 
+// Export the App function to be used elsewhere
 export default App;
