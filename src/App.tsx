@@ -1,3 +1,7 @@
+// IS 413 - Mission 09
+// by Jacob McGuire
+// Section 002, Group 03
+
 // Import React, CSSProperties, ./App.css, and the JSON file
 import React, { CSSProperties } from 'react';
 import './App.css';
@@ -45,8 +49,9 @@ function Heading() {
         This website was built by Jacob McGuire (Section 002, Group 03) for his
         Information Systems class. It shows a list of all Division 1 college
         basketball teams in little boxes, or, cards, with a little additional
-        information. This is a simple React website that will dynamically change
-        as you add values to the JSON file included in the source files.
+        information. This is a simple React website that will dynamically
+        change. React is very fast, powerful, and dynamic, and that is why it
+        has gained popularity rapidly.
       </p>
     </div>
   );
@@ -58,24 +63,34 @@ class TeamCard extends React.Component<TeamProps> {
     // Create a constant for the JSON data, but individually
     const oneTeam = this.props;
 
-    // Create a CSS style for the card
+    // Create a CSS style for the card content
     const cardStyle = {
       border: '2px solid black',
-      padding: '10px',
-      margin: '10px',
+      padding: '5px',
+      margin: '20px',
       backgroundColor: 'lightgray',
       borderRadius: '10px',
+      width: '500px',
+    };
+
+    // Create a CSS style for the card
+    const cardLook = {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     };
 
     // Get the data from the single JSON object (above) and display it in the card
     return (
-      <div style={cardStyle}>
-        <h2>School Name: {oneTeam.school}</h2>
+      <div style={cardLook}>
+        <div style={cardStyle}>
+          <h2>School Name: {oneTeam.school}</h2>
 
-        <p>School Mascot Name: {oneTeam.name}</p>
-        <p>
-          Location (City, State): {oneTeam.city}, {oneTeam.state}
-        </p>
+          <p>School Mascot Name: {oneTeam.name}</p>
+          <p>
+            Location (City, State): {oneTeam.city}, {oneTeam.state}
+          </p>
+        </div>
       </div>
     );
   }

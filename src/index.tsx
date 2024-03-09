@@ -1,3 +1,7 @@
+// IS 413 - Mission 09
+// by Jacob McGuire
+// Section 002, Group 03
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
